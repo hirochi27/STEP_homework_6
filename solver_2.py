@@ -37,7 +37,7 @@ def create_neighbor_list(cities, neighbor_count=20):
 #　一番遠いやつを繋いでみるとか
 
 # 貪欲法で都市を回る順番を作る関数
-def greedy(cities, neighbor_list, start_index=0):
+def greedy(cities, neighbor_list):
     diff_list = []       # 基準となる都市から、他の都市への距離を保存
     answer_list = []     # 答えとして返すリスト
 
@@ -48,9 +48,9 @@ def greedy(cities, neighbor_list, start_index=0):
     cities_count = len(cities)
     visited = [False] * cities_count  # 既に回った都市をTrueで管理
 
-    # start_indexの都市から開始する
-    now_city = cities[start_index]
-    now_city_index = start_index
+    # 最初の都市だけ、それぞれのリストに入れておく
+    now_city = cities[0]
+    now_city_index = 0
     answer_list.append(now_city_index)
     visited[now_city_index] = True
 
@@ -223,12 +223,12 @@ def two_five_opt(cities, answer_list, neighbor_list):
     return answer_list
 
 
-def solve(cities, start_index=0):
+def solve(cities):
     # 各都市について、近い都市だけを先に計算しておく
     neighbor_list = create_neighbor_list(cities, 20)
 
     # 貪欲法で最初の経路を作る
-    answer_list = greedy(cities, neighbor_list, start_index)
+    answer_list = greedy(cities, neighbor_list)
 
     # 2-optで経路を改善する
     answer_list = two_opt(cities, answer_list, neighbor_list)
@@ -241,10 +241,5 @@ def solve(cities, start_index=0):
 
 if __name__ == '__main__':
     assert len(sys.argv) > 1
-    start_index = 0
-
-    if len(sys.argv) > 2:
-        start_index = int(sys.argv[2])
-
-    tour = solve(read_input(sys.argv[1]), start_index)
+    tour = solve(read_input(sys.argv[1]))
     print_tour(tour)
