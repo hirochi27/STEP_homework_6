@@ -1,5 +1,5 @@
-trial: 29
-start_city: 177
-distance: 40903.49
-elapsed_sec: 25.06
-output_file: random_start_outputs_6/output_6_trial_29.csv
+trial: 132
+start_city: 1043
+distance: 40700.49
+elapsed_sec: 42.39
+output_file: random_start_outputs_6/output_6_trial_132.csv

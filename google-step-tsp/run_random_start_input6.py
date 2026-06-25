@@ -17,7 +17,7 @@ BEST_INFO_FILE = "best_output_6_info.txt"
 TRIAL_OUTPUT_DIR = Path("random_start_outputs_6")
 
 # 5時間回す
-TIME_LIMIT_SEC = 5 * 60 * 60
+TIME_LIMIT_SEC = 10 * 60 * 60
 
 
 def calculate_distance(city1, city2):
